@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Hash Test</title>
+        <script type="text/javascript" src="hash.js"></script>
+        <script type="text/javascript">
+            function appendText(string, father){
+                var pE = document.createElement('p');
+                var tN = document.createTextNode(string);
+
+                pE.appendChild(tN);
+                father.appendChild(pE);
+            }
+
+            window.onload = function(){
+                var r = document.getElementById('results');
+                var h = new Hash();
+                h.put('foo', 'bar');
+                appendText('var h = new Hash();', r);
+                appendText("h.put('foo', 'bar');", r);
+                appendText("h.get('foo') == " + h.get('foo'), r);
+                appendText("h.get('bar') == " + h.get('bar'), r);
+                Object.prototype.foo = 'baz';
+                appendText("Object.prototype.foo = 'baz';", r);
+                appendText('({}).foo == ' + ({}).foo, r);
+                appendText('h.foo == ' + h.foo, r);
+                appendText("h.get('foo') == " + h.get('foo'), r);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="results">
+        </div>
+    </body>
+</html>

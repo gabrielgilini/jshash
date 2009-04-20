@@ -1,6 +1,6 @@
 function Hash(){
     var _hash = {};
-    var pre = '__' + (new Date()).getTime();
+    var pre = '__' + (new Date()).getTime() + '__';
 
     function put(key, value){
         _hash[pre + key] = value;
